@@ -1,0 +1,55 @@
+
+
+
+
+Para la realización del ejercicio, he utilizado la demo de saltstack publicada en github (https://github.com/UtahDave/salt-vagrant-demo), que provisiona un servidor master y dos "minions".
+
+He modificado la box base de "ubuntu/trusty64" original por la "bento/centos-6.7" y comentado la parte de creación de los servidores esclavos.
+
+
+
+
+GIT: https://github.com/luismy83/prueba-saltstack.git
+
+Fuentes:
+	- https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html
+
+Cmds:
+	- salt '*' grains.items
+	- sudo salt -G 'osfullname:CentOS' test.ping
+	- remote command: 
+			sudo salt '*' pkg.install git
+			sudo salt '*' cmd.run 'ls -l /etc'
+			sudo salt -G os:CentOS cmd.run 'ls -l /etc'
+
+
+
+
+Pasos:
+
+	- Creación de usuario monitoring:
+
+		creada state para usuarios: /srv/salt/common/users/ ( incluido en common para agregar el usuario a todos los servidores )
+		creada definición de usuarios en pillar: /srv/pillar/users/
+		claves ssh: se incluye la clave del usuario a través del servidor de ficheros de salt, si este tiene habilitada una opción 'key.pub' en sus atributos
+
+			Configurado el servidor de ficheros en el master (https://docs.saltstack.com/en/latest/ref/file_server/backends.html#enabling-a-fileserver-backend):
+
+				fileserver_backend:
+	  				- roots
+
+				file_roots:
+	   				base:
+	     				- /srv/salt/
+	    en el state 'users' se recorre la definicion 'users' de pillar y se aplica la funcion 'ssh_auth.present' para agregar la clave pública al usuario en los minions
+	    aplicado: sudo salt '*' state.apply common.users ( se aplicará igualmente por defecto, al estar incluido en common )
+
+	- Servidor MySQL
+
+		creado state mysql-server para aplicar a minions: /srv/salt/mysql-server
+		añadido paquete MySQL-python, requerido para el módulo de salt 'mysql'
+
+
+		* La configuración es simple y no se divide por entornos, pero habría que definir variables y parámetros en pillar para aplicar a servidores MySQL de entornos diferentes con requerimientos distintos de seguridad
+
+	- 
