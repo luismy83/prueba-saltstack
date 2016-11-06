@@ -1,16 +1,16 @@
 wp_db:
    mysql_database:
       - present
-      - name: wordpress
+      - name: {{ pillar['wp_db'] }} 
    mysql_user:
       - present
-      - name: wordpress
-      - host: localhost
-      - password: app_w0rdPr3SsMySql
+      - name: {{ pillar['wp_user'] }} 
+      - host: {{ pillar['wp_host'] }} 
+      - password: {{ pillar['wp_pass'] }} 
    mysql_grants:
-      - present
+      - present 
       - name: grants_wordpress
-      - user: wordpress
-      - host: localhost
-      - database: wordpress.*
+      - user: {{ pillar['wp_user'] }} 
+      - host: {{ pillar['wp_host'] }} 
+      - database: {{ pillar['wp_db'] }}.*
       - grant: all privileges

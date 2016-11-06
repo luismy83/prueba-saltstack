@@ -1,4 +1,4 @@
-mysql.db: wordpress
-mysql.user: wordpress
-mysql.pass: app_w0rdPr3SsMySql
-mysql.host: localhost
+wp_db: wordpress
+wp_user: wordpress
+wp_pass: app_w0rdPr3SsMySql
+wp_host: localhost
