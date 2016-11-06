@@ -4,17 +4,19 @@ mysql-server:
     - pkgs:
       - mysql-server
       - MySQL-python 
+  file:
+    - managed 
+    - name: /etc/my.cnf
+    - source: salt://mysql-server/conf/my.cnf
+    - replace: True
   service:
     - running
     - name: mysqld
     - enable: True
     - require:
       - pkg: mysql-server
-  file:
-    - managed 
-    - name: /etc/my.cnf
-    - source: salt://mysql-server/conf/my.cnf
-    - replace: True
+    - watch:
+      - file: /etc/my.cnf
   mysql_user:
     - present
     - name: sqladmin 
