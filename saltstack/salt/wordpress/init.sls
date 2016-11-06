@@ -4,4 +4,5 @@ include:
   - wordpress.wp_vhost
   - wordpress.wp_db
   - wordpress.wp_config
+  - wordpress.wp_conffile
   - wordpress.wp_service
