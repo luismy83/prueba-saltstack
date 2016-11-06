@@ -1,4 +1,4 @@
-wp_db
+wp_db:
    mysql_database:
       - present
       - name: wordpress
@@ -7,10 +7,10 @@ wp_db
       - name: wordpress
       - host: localhost
       - password: app_w0rdPr3SsMySql
-   mysql_grant:
+   mysql_grants:
       - present
       - name: grants_wordpress
       - user: wordpress
       - host: localhost
-      - database: wordpress
+      - database: wordpress.*
       - grant: all privileges
