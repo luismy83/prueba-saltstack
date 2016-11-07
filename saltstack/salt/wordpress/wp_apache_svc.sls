@@ -4,4 +4,4 @@ wp_apache_service:
     - name: httpd
     - enable: True    
     - watch:
-      - file: /etc/httpd/conf.d/*
+      - file: {{ pillar['wordpress']['config']['file'] }}

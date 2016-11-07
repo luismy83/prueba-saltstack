@@ -1,4 +1,4 @@
-wordpress:
+phpmyadmin:
    database:
       name: wordpress
       user: wordpress
@@ -6,5 +6,3 @@ wordpress:
       host: localhost
    config:
       file: /etc/wordpress/wp-config.php
-   apache:
-      file: /etc/httpd/conf.d/wordpress.conf
