@@ -5,3 +5,4 @@ base:
     - mysql-server
     - wordpress
     - phpmyadmin
+    - lamp-services
