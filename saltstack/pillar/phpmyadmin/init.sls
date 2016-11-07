@@ -1,8 +1,6 @@
 phpmyadmin:
    database:
-      name: wordpress
-      user: wordpress
-      pass: app_w0rdPr3SsMySql
-      host: localhost
+      user: sqladmin 
+      pass: samplepass 
    config:
-      file: /etc/wordpress/wp-config.php
+      file: /etc/phpMyAdmin/config.inc.php
