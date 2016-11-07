@@ -1,7 +1,3 @@
-wp_service:
-  service:
-    - running
-    - name: httpd
-    - enable: True    
-    - watch:
-      - file: /etc/httpd/conf.d/wordpress.conf
+include:
+  - wordpress.wp_mysql_svc
+  - wordpress.wp_apache_svc
