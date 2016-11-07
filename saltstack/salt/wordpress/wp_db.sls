@@ -1,16 +1,16 @@
 wp_db:
    mysql_database:
       - present
-      - name: {{ pillar['wp_db'] }} 
+      - name: {{ pillar['wordpress']['database']['name'] }} 
    mysql_user:
       - present
-      - name: {{ pillar['wp_user'] }} 
-      - host: {{ pillar['wp_host'] }} 
-      - password: {{ pillar['wp_pass'] }} 
+      - name: {{ pillar['wordpress']['database']['user'] }} 
+      - host: {{ pillar['wordpress']['database']['host'] }} 
+      - password: {{ pillar['wordpress']['database']['pass'] }} 
    mysql_grants:
       - present 
       - name: grants_wordpress
-      - user: {{ pillar['wp_user'] }} 
-      - host: {{ pillar['wp_host'] }} 
-      - database: {{ pillar['wp_db'] }}.*
+      - user: {{ pillar['wordpress']['database']['user'] }} 
+      - host: {{ pillar['wordpress']['database']['host'] }} 
+      - database: {{ pillar['wordpress']['database']['name'] }}.*
       - grant: all privileges

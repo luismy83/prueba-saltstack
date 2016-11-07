@@ -1,6 +1,6 @@
 wp_conffile:
    file:
       - replace
-      - name: {{ pillar['wp_conf'] }}
+      - name: {{ pillar['wordpress']['config']['file'] }}
       - pattern: username_here 
-      - repl: {{ pillar['wp_conf'] }}
+      - repl: {{ pillar['wordpress']['database']['user'] }}
