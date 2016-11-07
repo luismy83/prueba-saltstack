@@ -19,7 +19,7 @@ mysql-server:
       - file: /etc/my.cnf
   mysql_user:
     - present
-    - name: sqladmin 
-    - password: samplepass 
+    - name: {{ pillar['mysql']['user'] }} 
+    - password: {{ pillar['mysql']['pass'] }} 
     - require:
       - service: mysqld
