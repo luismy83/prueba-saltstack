@@ -3,3 +3,4 @@ common_packages:
     - pkgs:
       - htop
       - strace
+      - epel-release
