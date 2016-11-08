@@ -1,3 +1,2 @@
 include:
-   - lamp-services.mysql_svc
-   - lamp-services.apache_svc
+   - lamp-services.watch_svc
