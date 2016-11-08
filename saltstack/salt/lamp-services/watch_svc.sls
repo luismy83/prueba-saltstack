@@ -10,5 +10,5 @@ mysqld:
       - require:
          - pkg: mysql-server
       - watch:
-         - file: /etc/my.cnf
+         - file: {{ pillar['mysql-server']['config']['file']}} 
          - pkg: mysql-server
